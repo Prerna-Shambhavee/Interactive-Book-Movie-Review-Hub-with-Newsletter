@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CultureCrit - Books, Movies & Witty Insights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3a0ca3;
+            --primary-light: #4cc9f0;
+            --secondary: #f72585;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #2b2d42;
+            --gray: #adb5bd;
+            --success: #4caf50;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-weight: 600;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(247, 37, 133, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--secondary);
+        }
+
+        /* Featured Section */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background: none;
+            border: none;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--primary-light);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-category.book {
+            background: var(--primary);
+        }
+
+        .card-category.movie {
+            background: var(--accent);
+        }
+
+        .card-category.article {
+            background: var(--secondary);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .card-rating {
+            color: #ffc107;
+        }
+
+        .card-excerpt {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .read-more {
+            font-weight: 600;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--secondary);
+        }
+
+        .save-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .save-btn:hover, .save-btn.saved {
+            color: var(--secondary);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Weekly Articles */
+        .featured-article {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .article-img {
+            height: 400px;
+        }
+
+        .article-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 2rem;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(-50px);
+            transition: var(--transition);
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--secondary);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+
+            .article-img {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 99;
+            }
+
+            nav.active {
+                transform: translateY(0);
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-pen-fancy"></i>
+                <span>CultureCrit</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#books">Books</a></li>
+                    <li><a href="#movies">Movies</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="#newsletter">Newsletter</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Discover Your Next Favorite Story</h1>
+                <p>Weekly book & movie reviews, witty cultural commentary, and personalized recommendations delivered straight to your inbox.</p>
+                <div>
+                    <a href="#newsletter" class="btn">Subscribe</a>
+                    <a href="#articles" class="btn btn-outline">Read Latest</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Books & Movies -->
+    <section class="section" id="books">
+        <div class="container">
+            <div class="section-title">
+                <h2>This Week's Top Picks</h2>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="books-tab">Books</button>
+                <button class="tab-btn" data-tab="movies-tab">Movies</button>
+            </div>
+            
+            <div class="tab-content active" id="books-tab">
+                <div class="card-grid">
+                    <!-- Book Card 1 -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Book Cover">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category book">Book Review</span>
+                            <h3 class="card-title">The Midnight Library</h3>
+                            <div class="card-meta">
+                                <span>Matt Haig</span>
+                                <span class="card-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </span>
+                            </div>
+                            <p class="card-excerpt">Between life and death there is a library, and within that library, the shelves go on forever...</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more" data-modal="book1">Read Review</a>
+                                <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Card 2 -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Book Cover">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category book">Book Review</span>
+                            <h3 class="card-title">Project Hail Mary</h3>
+                            <div class="card-meta">
+                                <span>Andy Weir</span>
+                                <span class="card-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </span>
+                            </div>
+                            <p class="card-excerpt">A lone astronaut must save the earth from disaster in this incredible new science-based thriller...</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more" data-modal="book2">Read Review</a>
+                                <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Card 3 -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Book Cover">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category book">Book Recommendation</span>
+                            <h3 class="card-title">Klara and the Sun</h3>
+                            <div class="card-meta">
+                                <span>Kazuo Ishiguro</span>
+                                <span class="card-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </span>
+                            </div>
+                            <p class="card-excerpt">What does it mean to love? An unforgettable story from the Nobel laureate that explores...</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more" data-modal="book3">Read Review</a>
+                                <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="movies-tab">
+                <div class="card-grid">
+                    <!-- Movie Card 1 -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Movie Poster">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category movie">Movie Review</span>
+                            <h3 class="card-title">Dune: Part Two</h3>
+                            <div class="card-meta">
+                                <span>2024 • Sci-Fi</span>
+                                <span class="card-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </span>
+                            </div>
+                            <p class="card-excerpt">Denis Villeneuve's epic continuation of the Dune saga delivers breathtaking visuals and...</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more" data-modal="movie1">Read Review</a>
+                                <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Movie Card 2 -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Movie Poster">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category movie">Movie Review</span>
+                            <h3 class="card-title">The Holdovers</h3>
+                            <div class="card-meta">
+                                <span>2023 • Drama</span>
+                                <span class="card-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </span>
+                            </div>
+                            <p class="card-excerpt">A curmudgeonly instructor at a New England prep school remains on campus during...</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more" data-modal="movie2">Read Review</a>
+                                <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Movie Card 3 -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Movie Poster">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category movie">Movie Recommendation</span>
+                            <h3 class="card-title">Past Lives</h3>
+                            <div class="card-meta">
+                                <span>2023 • Romance</span>
+                                <span class="card-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </span>
+                            </div>
+                            <p class="card-excerpt">Nora and Hae Sung, two deeply connected childhood friends, are wrested apart after...</p>
+                            <div class="card-footer">
+                                <a href="#" class="read-more" data-modal="movie3">Read Review</a>
+                                <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Articles -->
+    <section class="section" id="articles">
+        <div class="container">
+            <div class="section-title">
+                <h2>Weekly Witty Articles</h2>
+            </div>
+            
+            <!-- Featured Article -->
+            <div class="featured-article">
+                <div class="article-img">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Article Image">
+                </div>
+                <div class="article-content">
+                    <span class="card-category article">Culture Commentary</span>
+                    <h3>Why We're All Secretly Obsessed With Dystopian Fiction</h3>
+                    <div class="article-meta">
+                        <div class="article-author">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Author">
+                            <span>Sarah Johnson</span>
+                        </div>
+                        <span>March 15, 2024</span>
+                    </div>
+                    <p>In an era of climate change, political upheaval, and global pandemics, why do we find comfort in stories about even worse scenarios? This article explores our cultural fascination with dystopian narratives and what they reveal about our collective psyche...</p>
+                    <a href="#" class="btn" style="margin-top: 1rem;" data-modal="article1">Read Full Article</a>
+                </div>
+            </div>
+            
+            <!-- More Articles -->
+            <div class="card-grid">
+                <!-- Article Card 1 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Article Image">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category article">Literary Analysis</span>
+                        <h3 class="card-title">The Unexpected Philosophy of Children's Books</h3>
+                        <div class="card-meta">
+                            <span>March 8, 2024</span>
+                            <span>8 min read</span>
+                        </div>
+                        <p class="card-excerpt">From Winnie the Pooh to Where the Wild Things Are, children's literature contains profound wisdom about life, fear, and friendship that we often overlook as adults...</p>
+                        <div class="card-footer">
+                            <a href="#" class="read-more" data-modal="article2">Read Article</a>
+                            <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Article Card 2 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Article Image">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category article">Film Theory</span>
+                        <h3 class="card-title">The Death of the Mid-Budget Movie</h3>
+                        <div class="card-meta">
+                            <span>March 1, 2024</span>
+                            <span>10 min read</span>
+                        </div>
+                        <p class="card-excerpt">As Hollywood increasingly focuses on billion-dollar franchises and tiny indies, what happened to the $30 million drama that used to dominate awards season...</p>
+                        <div class="card-footer">
+                            <a href="#" class="read-more" data-modal="article3">Read Article</a>
+                            <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Article Card 3 -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1510172951991-856a62a9e395?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Article Image">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category article">Book Industry</span>
+                        <h3 class="card-title">Why BookTok is Changing Publishing Forever</h3>
+                        <div class="card-meta">
+                            <span>February 22, 2024</span>
+                            <span>7 min read</span>
+                        </div>
+                        <p class="card-excerpt">How a generation of TikTokers are reshaping what gets published, what becomes popular, and who gets to decide what counts as literature in the 21st century...</p>
+                        <div class="card-footer">
+                            <a href="#" class="read-more" data-modal="article4">Read Article</a>
+                            <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <h2>Get Our Weekly Culture Digest</h2>
+            <p>Join 50,000+ readers who receive our curated selection of book and movie reviews, thought-provoking articles, and exclusive recommendations every Friday.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>CultureCrit</h3>
+                    <p>Your guide to meaningful books, thought-provoking films, and witty cultural commentary since 2020.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-goodreads"></i></a>
+                        <a href="#"><i class="fab fa-letterboxd"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="#books">Book Reviews</a></li>
+                        <li><a href="#movies">Movie Reviews</a></li>
+                        <li><a href="#articles">Weekly Articles</a></li>
+                        <li><a href="#">Recommendations</a></li>
+                        <li><a href="#">Yearly Awards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Subscribe</h3>
+                    <ul class="footer-links">
+                        <li><a href="#newsletter">Newsletter</a></li>
+                        <li><a href="#">RSS Feed</a></li>
+                        <li><a href="#">Podcast</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                        <li><a href="#">Gift Subscription</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 CultureCrit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Book 1 Modal -->
+    <div class="modal" id="book1-modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body">
+                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Book Cover" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 5px; margin-bottom: 1.5rem;">
+                <span class="card-category book">Book Review</span>
+                <h2>The Midnight Library</h2>
+                <div class="card-meta" style="margin: 0.5rem 0 1.5rem;">
+                    <span>Matt Haig • Fiction • 304 pages</span>
+                    <span class="card-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.5/5</span>
+                    </span>
+                </div>
+                
+                <h3 style="margin: 1.5rem 0 0.5rem;">Review</h3>
+                <p>Matt Haig's "The Midnight Library" is a poignant exploration of regret, choice, and the infinite possibilities of life. The novel follows Nora Seed, a woman who finds herself in a mystical library between life and death, where each book represents a different version of her life had she made different choices.</p>
+                
+                <p>What makes this novel particularly compelling is its balance between philosophical depth and accessible storytelling. Haig tackles weighty existential questions without ever becoming ponderous. The concept of the midnight library itself is beautifully realized—a place that's both comforting and terrifying, where every book holds both potential salvation and painful revelation.</p>
+                
+                <p>The novel's greatest strength lies in its emotional honesty. Nora's journey through her possible lives reveals universal truths about human nature—our tendency to romanticize paths not taken, our struggle to appreciate what we have, and our capacity for change. Haig's prose is clean and direct, with moments of genuine lyricism when describing the library and its mysterious caretaker.</p>
+                
+                <h3 style="margin: 1.5rem 0 0.5rem;">Recommendation</h3>
+                <p>Perfect for readers who enjoyed "The Invisible Life of Addie LaRue" or "Life After Life." While the premise might sound melancholic, the book ultimately delivers a hopeful message about the value of ordinary life. It's particularly resonant for anyone who's ever wondered "what if?" about their own choices.</p>
+                
+                <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                    <p><strong>Published:</strong> August 13, 2020</p>
+                    <p><strong>Genres:</strong> Contemporary Fiction, Fantasy, Philosophy</p>
+                    <p><strong>Similar to:</strong> The Invisible Life of Addie LaRue, Life After Life, The Five People You Meet in Heaven</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // Tab Functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Modal Functionality
+            const modalTriggers = document.querySelectorAll('[data-modal]');
+            const modals = document.querySelectorAll('.modal');
+            const closeBtns = document.querySelectorAll('.modal-close');
+            
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const modalId = this.getAttribute('data-modal') + '-modal';
+                    document.getElementById(modalId).classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.closest('.modal').classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+            
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // Save/Bookmark Functionality
+            const saveBtns = document.querySelectorAll('.save-btn');
+            
+            saveBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.classList.toggle('saved');
+                    this.innerHTML = this.classList.contains('saved') ? 
+                        '<i class="fas fa-bookmark"></i>' : 
+                        '<i class="far fa-bookmark"></i>';
+                    
+                    // Show feedback (in a real app, this would save to a database)
+                    if (this.classList.contains('saved')) {
+                        const originalText = this.getAttribute('data-original-text') || '';
+                        this.setAttribute('data-original-text', this.innerHTML);
+                        this.innerHTML = '<i class="fas fa-check"></i>';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = '<i class="fas fa-bookmark"></i>';
+                        }, 1000);
+                    }
+                });
+            });
+            
+            // Newsletter Form Submission
+            const newsletterForm = document.querySelector('.newsletter-form');
+            
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const emailInput = this.querySelector('input[type="email"]');
+                
+                // Simple validation
+                if (emailInput.value && emailInput.value.includes('@')) {
+                    // In a real app, this would submit to a server
+                    alert('Thanks for subscribing to our newsletter!');
+                    emailInput.value = '';
+                } else {
+                    alert('Please enter a valid email address');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        mainNav.classList.remove('active');
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
